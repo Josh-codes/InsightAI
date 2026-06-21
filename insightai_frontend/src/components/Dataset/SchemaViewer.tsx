@@ -18,12 +18,12 @@ export default function SchemaViewer({ schema, columnStats }: Props) {
       {Object.entries(schema).map(([col, type]) => {
         const stats = columnStats[col] ?? {}
         return (
-          <div key={col} className="bg-surface rounded-lg p-3 border border-slate-700">
+          <div key={col} className="bg-landing-bg rounded-lg p-3 border border-warm-border">
             <div className="flex items-center justify-between mb-1">
-              <span className="font-mono text-sm text-white truncate">{col}</span>
-              <span className="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded ml-2 shrink-0">{type}</span>
+              <span className="font-mono text-sm text-warm-white truncate">{col}</span>
+              <span className="text-xs text-accent bg-accent/10 px-2 py-0.5 rounded ml-2 shrink-0">{type}</span>
             </div>
-            <div className="text-xs text-slate-500 space-y-0.5">
+            <div className="text-xs text-warm-muted space-y-0.5">
               {stats.null_count !== undefined && <p>Nulls: {stats.null_count}</p>}
               {stats.min !== undefined && <p>Min: {stats.min} · Max: {stats.max} · Avg: {stats.mean}</p>}
               {stats.top_values && <p>Top: {stats.top_values.slice(0, 3).join(', ')}</p>}

@@ -16,35 +16,35 @@ export default function DatasetDetailPage() {
   const { data: dataset, isLoading } = useDataset(datasetId)
   const { run, isLoading: querying, result, error } = useRunQuery(datasetId)
 
-  if (isLoading) return <div className="min-h-screen bg-surface"><Navbar /><LoadingSpinner message="Loading dataset..." /></div>
-  if (!dataset) return <div className="min-h-screen bg-surface"><Navbar /><ErrorBanner message="Dataset not found." /></div>
+  if (isLoading) return <div className="min-h-screen bg-landing-bg font-inter"><Navbar /><LoadingSpinner message="Loading dataset..." /></div>
+  if (!dataset) return <div className="min-h-screen bg-landing-bg font-inter"><Navbar /><ErrorBanner message="Dataset not found." /></div>
 
   const queryError = error
     ? ((error as { response?: { data?: { message?: string } } })?.response?.data?.message ?? 'Query failed.')
     : null
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="min-h-screen bg-landing-bg font-inter text-warm-white">
       <Navbar />
       <main className="max-w-5xl mx-auto px-4 py-8 space-y-6">
         {/* Header */}
         <div>
-          <h2 className="text-2xl font-bold text-white">{dataset.name}</h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <h2 className="text-2xl font-bold text-warm-white">{dataset.name}</h2>
+          <p className="text-sm text-warm-muted mt-1">
             {dataset.row_count.toLocaleString()} rows · {Object.keys(dataset.schema).length} columns ·{' '}
             {formatBytes(dataset.file_size_bytes)} · Uploaded {formatDate(dataset.created_at)}
           </p>
         </div>
 
         {/* Schema */}
-        <div className="bg-card border border-slate-700 rounded-xl p-5">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Schema</h3>
+        <div className="bg-landing-card border border-warm-border rounded-xl p-5">
+          <h3 className="text-sm font-semibold text-warm-muted uppercase tracking-wide mb-3">Schema</h3>
           <SchemaViewer schema={dataset.schema} columnStats={dataset.column_stats} />
         </div>
 
         {/* Query Interface */}
-        <div className="bg-card border border-slate-700 rounded-xl p-5 space-y-4">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">Ask a Question</h3>
+        <div className="bg-landing-card border border-warm-border rounded-xl p-5 space-y-4">
+          <h3 className="text-sm font-semibold text-warm-muted uppercase tracking-wide">Ask a Question</h3>
           <QueryInput onSubmit={run} isLoading={querying} />
           {querying && <LoadingSpinner message="Generating SQL and analyzing data..." />}
           {queryError && <ErrorBanner message={queryError} />}
@@ -52,7 +52,7 @@ export default function DatasetDetailPage() {
         </div>
 
         {/* Query History */}
-        <div className="bg-card border border-slate-700 rounded-xl p-5">
+        <div className="bg-landing-card border border-warm-border rounded-xl p-5">
           <QueryHistory datasetId={datasetId} onSelect={run} />
         </div>
       </main>

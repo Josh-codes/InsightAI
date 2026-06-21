@@ -16,7 +16,7 @@ export default class ErrorBoundary extends Component<{ children: ReactNode }, St
   render() {
     if (this.state.hasError) {
       return (
-        <div className="text-slate-500 text-sm text-center py-8">
+        <div className="text-warm-muted text-sm text-center py-8">
           Could not render chart. View the table below instead.
         </div>
       )

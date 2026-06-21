@@ -33,46 +33,46 @@ export default function RegisterForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       {error && <ErrorBanner message={error} />}
       <div>
-        <label className="block text-sm text-slate-400 mb-1">Name</label>
+        <label className="block text-sm text-warm-muted mb-1">Name</label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="w-full bg-surface border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary"
+          className="w-full bg-landing-bg border border-warm-border rounded-lg px-3 py-2 text-warm-white focus:outline-none focus:border-accent"
         />
       </div>
       <div>
-        <label className="block text-sm text-slate-400 mb-1">Email</label>
+        <label className="block text-sm text-warm-muted mb-1">Email</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full bg-surface border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary"
+          className="w-full bg-landing-bg border border-warm-border rounded-lg px-3 py-2 text-warm-white focus:outline-none focus:border-accent"
         />
       </div>
       <div>
-        <label className="block text-sm text-slate-400 mb-1">Password</label>
+        <label className="block text-sm text-warm-muted mb-1">Password</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={8}
-          className="w-full bg-surface border border-slate-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary"
+          className="w-full bg-landing-bg border border-warm-border rounded-lg px-3 py-2 text-warm-white focus:outline-none focus:border-accent"
         />
       </div>
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-primary hover:bg-primary-dark disabled:opacity-50 text-white font-medium py-2 rounded-lg transition-colors"
+        className="w-full bg-accent hover:bg-accent-dark disabled:opacity-50 text-white font-semibold py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
       >
         {loading ? 'Creating account...' : 'Create Account'}
       </button>
-      <p className="text-center text-sm text-slate-400">
+      <p className="text-center text-sm text-warm-muted">
         Already have an account?{' '}
-        <Link to="/login" className="text-primary hover:underline">
+        <Link to="/login" className="text-accent hover:underline">
           Sign in
         </Link>
       </p>

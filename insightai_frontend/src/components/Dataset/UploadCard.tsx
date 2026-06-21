@@ -59,21 +59,21 @@ export default function UploadCard() {
         onDrop={onDrop}
         onClick={() => inputRef.current?.click()}
         className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-colors ${
-          dragging ? 'border-primary bg-primary/10' : 'border-slate-600 hover:border-slate-400'
+          dragging ? 'border-accent bg-accent/10' : 'border-warm-border hover:border-warm-muted'
         }`}
       >
         <input ref={inputRef} type="file" accept=".csv,.xlsx,.xls" onChange={onChange} className="hidden" />
         {uploading ? (
           <div className="space-y-2">
-            <p className="text-slate-400 text-sm">Uploading... {progress}%</p>
-            <div className="w-full bg-slate-700 rounded-full h-1.5">
-              <div className="bg-primary h-1.5 rounded-full transition-all" style={{ width: `${progress}%` }} />
+            <p className="text-warm-muted text-sm">Uploading... {progress}%</p>
+            <div className="w-full bg-landing-pill rounded-full h-1.5">
+              <div className="bg-accent h-1.5 rounded-full transition-all" style={{ width: `${progress}%` }} />
             </div>
           </div>
         ) : (
           <>
-            <p className="text-slate-300 font-medium">Drop a file here or click to browse</p>
-            <p className="text-slate-500 text-sm mt-1">CSV, XLSX — up to 50MB</p>
+            <p className="text-warm-white font-medium">Drop a file here or click to browse</p>
+            <p className="text-warm-muted text-sm mt-1">CSV, XLSX — up to 50MB</p>
           </>
         )}
       </div>

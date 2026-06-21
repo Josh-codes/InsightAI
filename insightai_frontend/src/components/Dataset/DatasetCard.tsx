@@ -24,19 +24,19 @@ export default function DatasetCard({ dataset }: { dataset: Dataset }) {
   return (
     <div
       onClick={() => navigate(`/datasets/${dataset.id}`)}
-      className="bg-card border border-slate-700 rounded-xl p-5 cursor-pointer hover:border-slate-500 transition-colors"
+      className="bg-landing-card border border-warm-border rounded-xl p-5 cursor-pointer hover:border-accent/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all duration-200"
     >
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="font-semibold text-white">{dataset.name}</h3>
-          <p className="text-sm text-slate-400 mt-1">
+          <h3 className="font-semibold text-warm-white">{dataset.name}</h3>
+          <p className="text-sm text-warm-muted mt-1">
             {dataset.row_count.toLocaleString()} rows · {formatBytes(dataset.file_size_bytes)}
           </p>
-          <p className="text-xs text-slate-500 mt-1">{formatDate(dataset.created_at)}</p>
+          <p className="text-xs text-warm-muted mt-1">{formatDate(dataset.created_at)}</p>
         </div>
         <button
           onClick={handleDelete}
-          className="text-slate-500 hover:text-red-400 transition-colors text-sm px-2 py-1"
+          className="text-warm-muted hover:text-red-400 transition-colors text-sm px-2 py-1"
         >
           Delete
         </button>

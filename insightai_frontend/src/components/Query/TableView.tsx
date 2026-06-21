@@ -4,7 +4,7 @@ export default function TableView({ data }: { data: Record<string, unknown>[] })
   const [sortKey, setSortKey] = useState<string | null>(null)
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc')
 
-  if (!data.length) return <p className="text-slate-500 text-sm">No results.</p>
+  if (!data.length) return <p className="text-warm-muted text-sm">No results.</p>
 
   const cols = Object.keys(data[0])
 
@@ -24,16 +24,16 @@ export default function TableView({ data }: { data: Record<string, unknown>[] })
 
   return (
     <div>
-      <p className="text-xs text-slate-500 mb-2">Showing {data.length} row{data.length !== 1 ? 's' : ''}</p>
-      <div className="overflow-x-auto rounded-lg border border-slate-700">
+      <p className="text-xs text-warm-muted mb-2">Showing {data.length} row{data.length !== 1 ? 's' : ''}</p>
+      <div className="overflow-x-auto rounded-lg border border-warm-border">
         <table className="w-full text-sm">
-          <thead className="bg-card">
+          <thead className="bg-landing-card">
             <tr>
               {cols.map((col) => (
                 <th
                   key={col}
                   onClick={() => toggleSort(col)}
-                  className="px-4 py-2 text-left text-slate-300 font-medium cursor-pointer hover:text-white whitespace-nowrap select-none"
+                  className="px-4 py-2 text-left text-warm-white font-medium cursor-pointer hover:text-accent whitespace-nowrap select-none"
                 >
                   {col} {sortKey === col ? (sortDir === 'asc' ? '↑' : '↓') : ''}
                 </th>
@@ -42,10 +42,10 @@ export default function TableView({ data }: { data: Record<string, unknown>[] })
           </thead>
           <tbody>
             {sorted.map((row, i) => (
-              <tr key={i} className={i % 2 === 0 ? 'bg-surface' : 'bg-card'}>
+              <tr key={i} className={i % 2 === 0 ? 'bg-landing-bg' : 'bg-landing-card'}>
                 {cols.map((col) => (
-                  <td key={col} className="px-4 py-2 text-slate-300 whitespace-nowrap max-w-xs truncate">
-                    {row[col] === null ? <span className="text-slate-600">null</span> : String(row[col])}
+                  <td key={col} className="px-4 py-2 text-warm-muted whitespace-nowrap max-w-xs truncate">
+                    {row[col] === null ? <span className="text-warm-border">null</span> : String(row[col])}
                   </td>
                 ))}
               </tr>

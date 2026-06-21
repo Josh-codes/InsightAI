@@ -10,14 +10,14 @@ export default function DashboardPage() {
   const { data: datasets, isLoading } = useDatasets()
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="min-h-screen bg-landing-bg font-inter text-warm-white">
       <Navbar />
       <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-white">Your Datasets</h2>
+          <h2 className="text-2xl font-bold text-warm-white">Your Datasets</h2>
           <button
             onClick={() => setShowUpload((v) => !v)}
-            className="bg-primary hover:bg-primary-dark text-white font-medium px-4 py-2 rounded-lg transition-colors text-sm"
+            className="bg-accent hover:bg-accent-dark text-white font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 text-sm"
           >
             {showUpload ? 'Cancel' : '+ Upload Dataset'}
           </button>
@@ -32,7 +32,7 @@ export default function DashboardPage() {
         {isLoading && <LoadingSpinner message="Loading datasets..." />}
 
         {!isLoading && datasets?.length === 0 && (
-          <div className="text-center py-16 text-slate-500">
+          <div className="text-center py-16 text-warm-muted">
             <p className="text-lg mb-2">No datasets yet</p>
             <p className="text-sm">Upload a CSV or Excel file to get started.</p>
           </div>

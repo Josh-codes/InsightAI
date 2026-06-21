@@ -23,6 +23,8 @@ Rules:
 - Include LIMIT {row_limit} unless the user explicitly asks for all rows.
 - Return ONLY the raw SQL query — no explanation, no markdown code fences, no comments.
 - If the question cannot be answered with the available schema, return exactly: CANNOT_ANSWER
+- When casting a TEXT column to numeric (e.g. for comparison or arithmetic), always strip non-numeric characters first using REGEXP_REPLACE: REGEXP_REPLACE("col", '[^0-9.]', '', 'g')::numeric. Never cast a text column directly with ::numeric or CAST(col AS numeric).
+- Columns storing prices, ratings, or counts may be stored as text with symbols (e.g. "₹1,099", "4.2 out of 5"). Always clean them with REGEXP_REPLACE before any numeric operation.
 """
 
 
